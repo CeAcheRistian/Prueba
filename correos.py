@@ -29,6 +29,9 @@ def enviar_correo(corre_destinatario, cuerpo_correo, asunto_correo):
     finally:
         sesion_smtp.quit()
 
+
+
+
 def enviar_correo_img(correo_destinatario, asunto):
     remitente = '666monroy@gmail.com'
     destinatarios = []

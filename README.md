@@ -2,7 +2,9 @@
 Esto es una descripción genérica
 
 Con < git add archivo.py > se agregan archivos
-Con < git commit -m "Mensaje en ingles" > se 
+
+Con < git commit -m "Mensaje en ingles" > se ...
+
 Y con < git push > se suben al repositorio
 
 #Para clonarlo

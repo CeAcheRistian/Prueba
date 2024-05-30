@@ -4,10 +4,10 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from email.mime.base import MIMEBase
 
-def enviar_correo(corre_destinatario, cuerpo_correo, asunto_correo):
+def enviar_correo(correo_destinatario, cuerpo_correo, asunto_correo):
     remitente = "666monroy@gmail.com"
     destinatarios = []
-    destinatarios.append(corre_destinatario)
+    destinatarios.append(correo_destinatario)
     asunto = asunto_correo
     cuerpo = cuerpo_correo
     mensaje = MIMEMultipart()#Se instancia un objeto para mandar correos

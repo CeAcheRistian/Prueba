@@ -1,19 +1,22 @@
-#Un orm (object relation maps) es para mapear un sql a codigo de python, para no tocar sql
+#ORM (object relation maps) es para mapear un codigo sql a codigo de python, para no tocar sql directamente
 #Se usan clases para sustituir codigo de SQL
+
 from sqlalchemy import create_engine # Se importa el motor de bases de datos
 
-from sqlalchemy.orm import sessionmaker, declarative_base #El orm es una submodulo de sqlalchemy. El sessionmaker contine comandos como execute
-#El declarative_base es la clase padre para heredar a las clases que contiene al sql
+#ORM es una submodulo de sqlalchemy. El sessionmaker contine comandos como execute
+from sqlalchemy.orm import sessionmaker, declarative_base 
+#Declarative_base es la clase padre para heredar a las clases que contiene a sql
 
-from sqlalchemy import Column, Integer, String #El column es literalmente es la columna de las tablas. Si se trabaja con datos de tipo entero o cadenas, es necesario importarlos también
+#Column es literalmente es la columna de las tablas. Si se trabaja con datos de tipo entero o cadenas, es necesario importarlos también
+from sqlalchemy import Column, Integer, String 
 #Tambien se puede importar for in key y con este ligas una tabla con otra
 
 #Se configuran las conexiones
 engine = create_engine("sqlite:///basesqlalchemy.db") #sqlalchemy es independiente de sqlite
 
 #Instancia del motor y el nombre
-Sesion = sessionmaker(bind = engine) # es como un portal de conexion, es decir, cuantas conexiones se pueden tener
-sesion = Sesion() #Se necesita una instancia para crear hacer uso de base y ejecutar sentencias
+Sesion = sessionmaker(bind = engine) #Es como un portal de conexion, es decir, cuantas conexiones se pueden tener
+sesion = Sesion() #Se necesita una instancia para crear y hacer uso de base y ejecutar sentencias
 
 base = declarative_base() #Se crea la base
 
@@ -28,8 +31,10 @@ class Estudiante(base): #Modelado de sql en clases de Python
     
 if __name__ == "__main__":
     base.metadata.create_all(engine) # Es para crear la tabla con todos los datos insertados en la clase
-    #pedro = Estudiante(estudiante_id = 1, nombre = "Pedro") #Esta linea se ejecuta 1 sola vez, ya que se especifica el id, y si se vuelve a ejecutar sin modificar el id, se queja el interprete
+    #pedro = Estudiante(estudiante_id = 1, nombre = "Pedro") 
     #sesion.add(pedro)
+#Estas lineas se ejecutan 1 sola vez, ya que se especifica el id, y si se vuelve a ejecutar sin modificar el id, se queja el interprete
+
     sesion.commit()
     estudiantes = sesion.query(Estudiante).all() #Se guarda la info
     for i in estudiantes:

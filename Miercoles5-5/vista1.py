@@ -1,4 +1,5 @@
 #INterfaces gráficas
+#GUI: Grafical User Interface
 #Primero importamos tkinter, el modulo para crear widgets visuales
 import tkinter as tk #Se le pone el apodo para no escribir tanto jsjs
 
@@ -7,6 +8,7 @@ Como puede ser un botón, un input de texto, inclusive, la ventana principal es 
 """
 #Creamos una variable que es una instancia de la clase Tk()
 app = tk.Tk() #Esto es una representación de la ventana principal de la app
+#Puede llamarse app, run o root o main
 #Es decir, creamos la ventana principal.
 
 #Variables para guardar datos de una entrada de texto, de tipo stringvar y con StringVar
@@ -14,6 +16,8 @@ app = tk.Tk() #Esto es una representación de la ventana principal de la app
 palabra = tk.StringVar(app)
 entrada = tk.StringVar(app)
 
+def fun():
+    print("Hola")
 
 #Con el método geometry podemos modificar las dimensiones de la ventana
 #           Ancho x Alto
@@ -42,7 +46,8 @@ tk.Button(
     font=("Arial", 16), #Fuente y dimension de la letra dentro de una tupla
     bg="#00a8e8",#Color de fondo, especificado con su código hexadecimal
     fg="white", #Color del frente al tener al cursor encima del botón, afecta a la fuente de las letras
-    command= lambda: print("Hiciste click " + entrada.get()), #A command se le especifica una función a ejecutar
+    command=fun,
+    #lambda: print("Hiciste click " + entrada.get()), #A command se le especifica una función a ejecutar
     #En este caso imprime en consola el mensaje
     #Si no se escribe la funcion y solo pasamos el print. Se muestra el mensaje en consola al crear el objeto boton pero no al clickearlo
     #El entrada.get() funciona para que después de haberle pasado un texto al Label, se imprima en consola lo que escribimos, después de hacer click
@@ -70,6 +75,7 @@ tk.Label(
 #Igualmente llamamos a .pack() para incrustar el widget   
 ).pack(
     fill=tk.BOTH,
+    side="left",
     expand=True
 #Como el boton y el texto quieren rellenar toda la ventana, se la reparten a mitades
 )
@@ -81,7 +87,8 @@ tk.Entry(
     bg="gray",
     justify="left",
     textvariable= entrada #Ocupamos la variable  que guarda los strings del input  
-).pack(
+).pack( #El pack acomoda de uno debajo de otro. el .grid te pide las coordenadas para insertar 
+    
     fill=tk.BOTH,
     expand=True
 ) #Para este punto ya deberíamos de entender que los argumentos son casi los mismos

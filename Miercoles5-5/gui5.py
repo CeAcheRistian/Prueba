@@ -53,11 +53,9 @@ label.pack(fill=BOTH, expand=YES)
 #btn2.focus()
 
 
-label.bind('<Button-1>', imprimirPos) #al hacer click
-'''
-label.bind('<B1-Motion>', moviendo) #al moverse con click
-label.bind('<Button-3>', lambda event: print('Click izq')) #click izquierdo
+#label.bind('<Button-1>', imprimirPos) #al hacer click
+#label.bind('<B1-Motion>', moviendo) #al moverse con click
+#label.bind('<Button-3>', lambda event: print('Click izq')) #click izquierdo
+#label.bind('<Double-1>', terminar) ##doble click
 
-label.bind('<Double-1>', terminar) ##doble click
-'''
 mainloop()

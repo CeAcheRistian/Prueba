@@ -129,3 +129,60 @@ def palabras():
     isograma("acondicionar")
 #palabras()
 
+def valor_y_referencia():
+    var = 0
+    var1 = 1
+    lista = [1]
+    lista1 = [10]
+    def por_valor(variable1: int, variable2: int):
+        aux = variable1
+        variable1 = variable2
+        variable2 = aux
+        return variable1, variable2
+    
+    x,y = por_valor(var, var1)
+    print(var, ' ', var1, ' ',x , ' ', y)
+
+
+
+    def por_referencia(l1: list, l2: list):
+        aux = l1
+        l1 = l2
+        l2 = aux
+        return l1 ,l2
+    l3, l4 = por_referencia(lista, lista1)
+    print(lista, " ", lista1, " ", l3, " ", l4)
+#valor_y_referencia()
+
+def recursividad():
+    def orden_inverso(num:int):
+        if num >= 0:
+            print(num)
+            orden_inverso(num - 1)
+
+
+    def factorial(num: int):  
+        if num < 0:
+            print("No se puede un factorial de un número negativo")
+            return 
+        elif num == 0:
+            return 1
+        else:
+            return num * factorial(num - 1)
+
+
+    def fibonacci(num: int):
+        if num <= 0:
+            print("Fibonnacci no tiene posiciones negativas")
+            return 
+        elif num == 1:
+            return 0
+        elif num == 2:
+            return 1
+        else:
+            return fibonacci(num - 1) + fibonacci(num - 2)
+
+    orden_inverso(100)
+    print(factorial(5))
+    print(fibonacci(9))
+#recursividad()

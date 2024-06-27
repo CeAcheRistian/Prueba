@@ -186,3 +186,89 @@ def recursividad():
     print(factorial(5))
     print(fibonacci(9))
 #recursividad()
+
+def pilasyColas():
+    def navegar():
+        lista = []
+        while(True):
+            var = input('Escribe una url para navegar, o escribe adelante, atrás o salir: ')
+            if var == 'adelante':
+                pass
+            elif var == 'atras':
+                if len(lista) > 0:
+                    lista.pop()
+            elif var == 'salir':
+                print('Saliendo')
+                break
+            else:
+                lista.append(var)
+            
+            if len(lista) > 0:
+                print(f"Te encuentas en la página {lista[len(lista)-1]}")
+            else:
+                print("Estas en la página de inicio")
+
+    navegar()
+    def imprimir():
+        lista = []
+        while(True):
+            var = input('Dame el nombre de tus documentos, manda a imprimir o salir: ')
+
+            if var == 'salir':
+                break
+            elif var == 'imprimir':
+                if len(lista) > 0:
+                    print(f'Imprimiendo: {lista.pop(0)}')
+                else:
+                    print('No hay documentos en la cola')
+            else:
+                lista.append(var)
+
+            print(f'Documentos por imprimir: {lista}')
+    imprimir()        
+#pilasyColas()
+
+def Clases():   
+    class miClase():
+        def __init__(self, name, age, language):
+            self.name = name
+            self.age = age
+            self.language = language
+    
+    
+        def print(self):
+            print(f"Nombre: {self.name}, Edad: {self.age}, Lenguaje: {self.language}")
+
+    alumno = miClase('Christian', 26, 'Python')
+    alumno.print()
+    alumno.age = 27
+    alumno.print()
+
+    class PilasyColas():
+        def __init__(self):
+            self.lista = []
+        
+        def append(self, element):
+            self.lista.append(element)
+
+
+        def pop(self, index):
+            if len(self.lista) > 0:
+                self.lista.pop(index)
+            else:
+                print('Eso no es posible')
+        
+        def count(self):
+            return len(self.lista)
+        
+        def imprimir(self):
+            print(self.lista)
+
+    pila = PilasyColas()
+    pila.append(3)
+    print(pila.count())
+    pila.append('hola')
+    pila.append(False)
+    pila.pop(2)
+    pila.imprimir()
+#Clases()

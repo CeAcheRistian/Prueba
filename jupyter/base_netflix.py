@@ -1,6 +1,5 @@
 import sqlite3
 
-
 def netflix():
     con = sqlite3.connect('netflix_columns.db')
     cursor = con.cursor()

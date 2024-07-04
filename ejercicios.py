@@ -1,3 +1,4 @@
+import random
 def ejercicio1():
     for i in range(10,56):
         if i % 2 == 0 and i != 16 and i % 3 != 0:
@@ -272,3 +273,106 @@ def Clases():
     pila.pop(2)
     pila.imprimir()
 #Clases()
+
+def Empresa():
+    class Empleado():
+        def __init__(self, identificador, nombre) -> None:
+            self.identificador = identificador
+            self.nombre = nombre
+            self.lista_empleados = []
+
+        def agregar_empleado(self, empleado):
+            self.lista_empleados.append(empleado)
+
+        def imprimirEmpleados(self):
+            for e in self.lista_empleados:
+                print(e.nombre)
+        
+    class Gerente(Empleado):
+    
+        def __init__(self, identificador, nombre):
+            super().__init__(identificador, nombre)
+            self.chalanes = []
+
+        def chalan(self, nombre):
+            self.chalanes.append(nombre)
+            print(f'chalanes: {self.chalanes}')
+
+        def banioExclusivo(self):
+            print('Baño de gerentes')
+
+    class Gerente_Proyectos(Empleado):
+        sucursal = random.randint(0,100)
+
+        def __init__(self, identificador, nombre):
+            super().__init__(identificador, nombre)
+            self.chalanes = []
+
+        def chalan(self, nombre):
+            self.chalanes.append(nombre)
+            print(f'chalanes: {self.chalanes}')
+        
+        def autoEmpresa(self):
+            print(f'La empresa le presta un auto a {self.nombre}')
+
+    class Programador(Empleado):
+        def __init__(self, identificador, nombre, lenguajes):
+            super().__init__(identificador, nombre)
+            self.lenguajes = lenguajes
+        
+        def codear(self):
+            print(f'Escribo que escribo, compilo que compilo {self.lenguajes}')
+
+        def agregar_empleado(self, empleado):
+            print(f'Los programadores no pueden agregar empleados, {empleado} no puede ser agregado')
+        
+    empleado1 = Gerente('1', 'Chris')
+    empleado1.banioExclusivo()
+    empleado1.chalan('alberto')
+    
+    empleado2 = Gerente_Proyectos('2', 'Victor')
+    print(empleado2.sucursal)
+    empleado2.agregar_empleado(empleado1)
+    empleado2.autoEmpresa()
+
+    empleado3 = Programador('3', 'Karen', 'Python')
+    print(empleado3.lenguajes)
+    empleado3.codear()
+    empleado3.agregar_empleado('ale')
+    empleado2.agregar_empleado(empleado2)
+    empleado2.imprimirEmpleados()
+#Empresa()
+
+def Excepciones():
+    def ejemplo():
+        try:
+            x = 10/0
+            print(x)
+        except ZeroDivisionError:
+            print('no se puede dividir entre 0')
+    
+    def Exceptions():
+        try:
+            x = 'hola'
+            y = 56
+            print(x+y)
+        except TypeError:
+            print(TypeError)
+            print('No se pueden sumar dos objetos diferentes')
+        
+        try:
+            print(Hola)
+        except NameError:
+            print(NameError)
+            print('Las cadenas de texto llevan comillas simples o dobles')
+        
+        try:
+            lista = [1, '']
+            for i in len(lista):
+                print(i + 1)
+        except:
+            print(TypeError)
+            print('Se está intentando iterar un numero, no una lista o un objeto iterable')
+
+    Exceptions()
+Excepciones()

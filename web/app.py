@@ -19,7 +19,7 @@ def suma(num1, num2,num3): #tambien en los parametros
 
 if __name__ == "__main__":
     app.run(debug=True,port=5002) #el run es para correr el servidor, es necesario para visualizar los cambios
-    #Es debug es para hacer cambios sin tener que matar el servidor, los cambios se hacen en vivo, port es para cambiar el puerto
+    #El debug es para hacer cambios sin tener que matar el servidor, los cambios se hacen en vivo, port es para cambiar el puerto
 
-    #Existen 3 ramas de desallorro: QA es para pruebas, Prod o PDR es lo que se manda para consumo de lado del cliente, y Dev, que es el desarrollo
+    #Existen 3 ramas de desarrollo: QA es para pruebas, Prod o PDR es lo que se manda para consumo de lado del cliente, y Dev, que es el desarrollo
     

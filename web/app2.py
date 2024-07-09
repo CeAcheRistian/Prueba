@@ -14,5 +14,13 @@ def index(): #a la raiz principal se le denomina index
 def hello(): 
     return render_template("hello.html") 
 
+@app.route("/pelicula")
+def pelicula():
+    return render_template("pelicula.html")
+
+@app.route("/crear")
+def crear_cuenta():
+    return render_template("crear_cuenta.html")
+
 if __name__ == "__main__":
     app.run(debug=True)

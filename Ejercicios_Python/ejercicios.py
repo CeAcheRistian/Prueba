@@ -43,7 +43,7 @@ def agenda():
         for i in lista_agenda:
             if i[0] == nombre: 
                 print(i)
-               
+
     
     def eliminar_contacto():
         nombre = input("Dame el contacto que quieres eliminar: ")

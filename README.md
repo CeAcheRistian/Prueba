@@ -12,3 +12,5 @@ Y con < git push > se suben al repositorio web
 Con < git clone URL del repo que se quiere clonar > se clona un repo en los archivos locales
 
 git status Para saber que se está añadiendo y actualizando
+
+git pull origin main --rebase Es para anterior mente haces un commit pero no lo has guardado en el repositorio

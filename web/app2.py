@@ -34,6 +34,8 @@ def add(): #Se tiene aque especificar el metodo por el cual se recibe, por defec
 @app.route("/crear")
 def crear_cuenta():
     return render_template("crear_cuenta.html")
+ 
+ 
 
 @app.route("/presentar_usuarios")
 def presentar_usuarios():

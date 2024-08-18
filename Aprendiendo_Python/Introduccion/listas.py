@@ -43,10 +43,58 @@ sub_lista = lista_nombres[1:4:2]
 
 #Para obtener la lista en orden inverso se usa:
 sub_lista = lista_nombres[::-1]
-
 '''
 [star:end] 
 [star:] Se obtienen los últimos elementos
 [:end] Se obtienen los primeros elementos
 [star:end:skip] Se saltan elementos
 '''
+
+#Para añadir elementos a la lista, lo cuales se agregarán al final de esta
+lista_nombres.append('Felix')
+
+#Si se quiere añadir un elemento en una posición en específico. Lleva dos argumentos, el indice y el elemento.
+lista_nombres.insert(1,'Jesús')
+
+lista_apellidos = ['Monroy', 'Hernandez', 'Gutierrez', 'Martinez']
+
+#Se pueden sumar o extender listas con otras listas, desntro de los paréntesis se usa la lista para extender
+lista_nombres.extend(lista_apellidos)
+
+#Para eliminar elementos específicos
+lista_nombres.remove('Martinez')
+
+#Para eliminar elementos a partir de índices
+del lista_nombres[-1] #La palabra reservada del, hace referencia a delete
+#también existe el método pop(), puedes darle un índice como argumento, por defecto elimina el último, retorna el valor eliminado
+lista_nombres.pop()
+
+#Para eliminar todos los elementos de una lista
+lista_apellidos.clear()
+
+numeros = [40, 55, 1, 37, 100, 38]
+#Para ordenar una lista, de menor a mayor
+numeros.sort()
+
+#Ordenar de forma descendente
+numeros.sort(reverse=True)
+#Con estos dos métodos, se puede acceder rápidamente al elemento más pequeño y al más grande de la lista
+#Pero, existen dos métodos que hacen esto, sin necesidad de ordenarl la lista
+min(numeros)#El menor
+max(numeros)#El mayor
+
+#Para saber si un elemento está dentro de la lista. Retorna un valor booleano
+10 in numeros #tambien se vale: 11 not in lista
+
+#Para saber el indice de un elemento, si existen más elementos, solo retorna el primer índice encontrado    
+indice = numeros.index(1)
+
+#Una matriz es una lista de listas, puede ser 2x2 hasta nxn
+lista1 = [10,20]
+lista2 = [30,40]
+
+matriz = [lista1,lista2] #Matriz 2x2
+#Para seleccionar un elemento
+matriz[0][0]#Seleccionamos el 10
+# [0,0] [0,1]
+# [1,0] [1,1]   

@@ -31,6 +31,9 @@ valores = dicc.values()
 #Para saber ambos, llaves y valores, usamos el método items()
 items = dicc.items()
 
+#Los métodos items, keys y values retornan un objeto, este puede ser transformado a una tupla
+ejemplo = tuple(dicc.items())
+
 #Segunda forma, recorriendo el diccionario:
 for key, value in dicc.items():
     #print(key,value)
@@ -46,3 +49,12 @@ valor = dicc.setdefault('calificacion', 9)
 usuarios = ['Alex', 'Miriam', 'Jenny']
 diccionario = {usuario:position +1 for position,usuario in enumerate(usuarios)}
 print(diccionario)
+
+#Para eliminar llaves de un diccionario
+del dicc['nombre']
+
+#Eliminar un elemento con el método pop(), Retorna el valor de llave eliminada, por defecto elimina la última llave
+dicc.pop('edad')
+
+#Para eliminar todas las llaves del diccionario
+dicc.clear()

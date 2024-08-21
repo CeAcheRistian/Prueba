@@ -12,3 +12,7 @@ var = input('mensaje')
 
 #Con len() se conoce la longitud de una lista, cadena, diccionario, ...
 len([0,'', False])
+
+#Con el método range() podemos generar una secuencia de números, del 0 al n, sirve mucho para condicionales de ciclos for
+for i in range(10): #Range puede recibir 3 parámetros en total (inicio de la secuencia, final de la secuencia, salto entre los números) muy similar a [0:10:2] de las listas
+    pass

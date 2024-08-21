@@ -16,6 +16,7 @@ None
 #bool() para booleanos
 
 #Si divides con / te da un float, pero con // te de un int
+#Con % es el módulo , es decir, el residuo de la división
 
 #Existen 8 maneras de representar un valor falso
 '''False, None, 0, 0.0, ''/"", []. (), {} '''

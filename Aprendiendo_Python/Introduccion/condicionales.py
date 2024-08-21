@@ -26,3 +26,12 @@ elif x == 6 or x == 4:
     print(2)
 else:
     print(3)
+
+#El operador ternario permite asignar un valor a una variable es cual está sujeto a una condición, además ahorramos líneas de código y se ve chulo
+calificacion = 8
+mensaje = 'aprobado' if calificacion >= 7 else 'reprobado'
+
+#Mediante el operador lógico or, es posible asignar valores a variables, dependiendo de la evaluación de las posibles opcioones
+#Python lee de derecha a izquierda, manteniendo el primer valor verdadero que se encuentre
+valor = 'Chris' or True
+valor = False or 0 or [] or 1 #SE ALMACENA EL 1, por ser tomado como verdadero

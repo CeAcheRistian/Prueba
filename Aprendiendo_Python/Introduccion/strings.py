@@ -23,5 +23,17 @@ texto = 'Mi nombre es {apellido} {nombre} '.format(nombre = nombre, apellido = "
 
 #Otra forma de contatenar texto y variables usando f'', esta forma se pueden interpolar cualquier tipo de dato
 texto = f'Mi nombre es {nombre_completo} {10 + 20} {True} {[1, [], False]}'
-print(texto)
 
+#Con el método count() como lo dice, cuenta los caracteres o cadena que se le mande como argumento
+texto.count('Chris')
+#Una forma similar, donde solo queremos saber si se encuentra o no, ya que in retorna un valor booleano
+'Chris' in texto
+
+#Existen dos métodos para hacer que las cadenas se encuentren en minúscula y mayúscula
+texto.lower()
+texto.upper()
+
+#Para justificar o alinear el texto se usan los métodos ljust(), rjust(), center(). No se modifica el texto original, se debe almacenar en una variable lo retornado
+texto = texto.ljust(5) #Se recibe como argumento un número, este simboliza la cantidad de espacios que se dejaran de ese lado
+texto = texto.rjust(5)
+texto = texto.center(10)

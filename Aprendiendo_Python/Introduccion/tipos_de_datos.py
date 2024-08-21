@@ -5,6 +5,8 @@ Int: para numeros enteros positivos o negativos
 Float: para numeros de punto flotante
 Boolean: para valores binarios, verdadero y falso
 '''
+#Se simboliza el vacío, la nada, el null con: 
+None
 
 #Se puede convertir los tipos de datos, con ciertas limitaciones
 #Con la función int() puedes convertir un tipo de dato a un entero, siempre y cuando sea un número

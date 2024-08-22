@@ -16,3 +16,9 @@ len([0,'', False])
 #Con el método range() podemos generar una secuencia de números, del 0 al n, sirve mucho para condicionales de ciclos for
 for i in range(10): #Range puede recibir 3 parámetros en total (inicio de la secuencia, final de la secuencia, salto entre los números) muy similar a [0:10:2] de las listas
     pass
+
+#La función sum() hace la suma de todos los elementos dentro de una coleccion, como una lista, tupla,...
+sum(1,2,2,3)
+
+#El método id() te permite saber la identificación numérica de cualquier variable, es decir, su dirección en memoria
+id(variable)

@@ -6,7 +6,9 @@ def mi_funcion():
 #Las funciones no se ejecutan,a menos que sean mandadas a llamar o se almacenen en una variable
 mi_funcion() #Pueden ser ejecutadas cuantas veces queramos
 
-#En los parámetros (o valores de entrada) van variables que serán definidas y  posteriormente usadas DENTRO de la función, son OPCIONALES
+#Entre funciones debe haber 2 espacios, por convencion
+
+#En los parámetros (o valores de entrada) van variables que serán definidas y posteriormente usadas DENTRO de la función, son OPCIONALES y en n cantidad
 def sumar(a,b):
     print(a+b) #Estas variables solo existen dentro de la función, no pueden ser llamadas ni modificadas fuera de la función
 
@@ -25,5 +27,33 @@ print(resultado)
 def area_circulo(radio, pi=3.14): #Sin espacios entre la asignación
     return pi * (radio ** 2)
 area_circulo(3) #Argumento para el área, por la posición en la que se los parámetros se crearon
+
 #También es posible especificar el orden
-area_circulo(pi=3.141592,area=8)
+area_circulo(pi=3.141592,radio=8)
+
+#Funciones dentro de otras funciones y ejemplo de n cantidad de argumentos
+def promedio(lista):
+    return sum(lista)/len(lista)
+
+promedio([1,2,3,4,5,6,7,8,9])
+
+#Es posible usar una n cantidad de argumentos sin tener que especificarlos, con *args
+def prom(*args): #Con este *args, por convencion es args, se le indica a Python que use todos los argumentos que se le pasaron, Py los meterá a una tupla
+    return sum(args)/len(args)
+prom(1,2,3,4,56,7)
+
+#Para combinar entre parametros normales, opcionales y *args
+def combinacion(p1,p2,*args, p4=900):
+    print(p1 ,p2 ,args, p4)
+combinacion(1,2,3,4,5,6)
+
+#Si quisieramos trabajar con diccionarios y no con tuplas, entonce usamos **kwargs
+def usuarios(**kwargs):
+    print(kwargs)
+    print(type(kwargs))
+        #llave=[valor]
+usuarios(Christian=[10,9,10], Alejandro=[9,8,10])
+
+#Por convención, el orden de los parámetros es: argumentos normales,argumentos opcionales, *args, **kwargs, 
+def ejemplo(param1,param2,param3=3, *args, **kwargs):
+    return print(param1,param2,param3,args,kwargs)

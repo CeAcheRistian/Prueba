@@ -14,3 +14,21 @@ print(animal) #La variable animal conseva su valor, ya que fue creada fuera de u
 def ejemplo2():
     global animal
     animal = 'Gato'
+    
+
+#Python permite la anidación de funciones
+def func1():
+    def func2():
+        pass
+
+#Las funciones se consideran como "Ciudadanos de primera clase". Es to quiere decir que las funciones pueden ser asignadas a variables,
+# usadas como arugmentos de otras funciones y puede haber funciones que retornen funciones
+def centigrados_faren(grados):
+    return grados * 1.8 +32
+
+#Asignación a una variable
+funcion = centigrados_faren
+#Ejemplo de una función siendo mandada como argumento
+print(funcion(10))
+
+#Una función lambda o función anónima

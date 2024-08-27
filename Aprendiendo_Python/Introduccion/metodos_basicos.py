@@ -22,3 +22,6 @@ sum(1,2,2,3)
 
 #El método id() te permite saber la identificación numérica de cualquier variable, es decir, su dirección en memoria
 id(variable)
+
+#El método sum() suma los valores que se le pasen
+sum(1,2,3)

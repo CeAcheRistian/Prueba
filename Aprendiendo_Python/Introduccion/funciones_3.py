@@ -52,3 +52,19 @@ resutlado = suma(10,20)
 #Si imprimimos el resultado nos dará None, y no la suma. La función decorada debe retornar lo que retorne la función base, esto para poder obtener el valor de la función base
 print(resutlado)
 
+#Un generador (o Lazy iterator) es un tipo especial de función la cual retorna objetos iterables, esto sin que la función finalice
+#En vez de usar return se usa yield, con esto se suspende temporalmente la ejecución de la función, en lo que se retorna el objeto, después se continua con la función
+def generador():
+    for i in range(0,10,2): #Puros números pares
+        #Con yield podemos retornar valores sin que la función finalice
+        yield i
+#iteramos los objetos que nos manda la función
+for par in generador():
+    pass    
+    #print(par)
+#Con los generadores, nos ahorramos espacio en memoria, ya que ocupamos lo que necesitamos y nadamas
+
+#Con el método next() podemos obtener el elemento de una iteración del generador
+elemento_par = generador()
+print(next(elemento_par))
+print(next(elemento_par))

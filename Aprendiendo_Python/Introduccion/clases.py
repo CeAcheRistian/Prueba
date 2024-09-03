@@ -19,5 +19,7 @@ User.age = "0" #También se permite la modificación de atributos
 #Los objetos que son instancias de la clase poseen los atributos y métodos de la clase, pero unos propios.
 jesus = User()
 jesus.name = 'jesus' #No se modifica el atributo de la clase, sino el atributo de la instancia. Incluso se pueden añadir atributos en tiempo de ejecución
-#Pyhton trabaja internamente con el meta-atributo __dict__ Dento de este se encuentran todos los atributos que posea el objeto en un diccionario
+#Python trabaja internamente con el meta-atributo __dict__ .Dentro de este se encuentran todos los atributos que posea el objeto en un diccionario
 print(jesus.__dict__)
+
+#Las instancias de la clase deben poseer los mismos atributos

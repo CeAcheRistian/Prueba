@@ -16,44 +16,39 @@ archivo = '/home/ceacheristian/py/Prueba/Ejercicios_Python/CeAcheRistian.txt'
 os.remove(archivo)
 
 archivo = 'abarrotes.txt'
-global lista_productos
-lista_productos = []
-with open(archivo, 'w+') as a:
 
-    def ingresar():
-        producto = input('Ingresa el nombre del producto: ')
-        cantidad = input('Ingresa la cantidad vendida: ')
-        costo = input('Ingresa el costo del producto: ')
-        
-        lista_productos.append(f'{producto} ')
-        lista_productos.append(f'{cantidad} ')
-        lista_productos.append(f'{costo} \n')
-        a.seek()
-        a.writelines(lista_productos)
-        print(lista_productos)
+while True:
+    print("1. Añadir producto.")
+    print("2. Consultar producto.")
+    print("3. Actualizar producto.")
+    print("4. Borrar producto.")
+    print("5. Calcular venta total.")
+    print("6. Calcular venta por producto.")
+    print("7. Salir.")
 
-    def consultar():
-        a.seek(0)
-        print(a.read())
+    opcion = input('Qué desea hacer?: ')
 
+    if opcion == "1":
+        producto = input('Nombre del producto: ')
+        cantidad = input('Cantidad: ')
+        precio = input('Precio: ')
 
-    def eliminar_productos():
-        print('Estos son los productos en la lista:')
-        consultar()
-        producto_eliminado = input('Escribe el nombre del producto que deseas eliminar: ')
-        a.seek(0)
-        lista_productos = a.readlines()
-        for e in lista_productos:
-            if producto_eliminado in e:
-                print('ENCONTRADO')
-                lista_productos.pop(lista_productos.index(e))
-        a.seek(0)
-        a.writelines(lista_productos)
+        with open(archivo, 'w'):
+            archivo.write(producto)
+    elif opcion == "2":
+        pass
+    elif opcion == "3":
+        pass
+    elif opcion == "4":
+        pass
+    elif opcion == "5":
+        pass
+    elif opcion == "6":
+        pass
+    elif opcion == "7":
+        print('El archivo se autodestruirá.')
+        os.remove(archivo)
+        break
+    else:
+        print('Selecciona una opción válida.')
 
-
-
-
-    
-    ingresar()
-    #eliminar_productos()
-    consultar()

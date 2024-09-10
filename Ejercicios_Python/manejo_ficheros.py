@@ -1,5 +1,5 @@
 import os
-
+'''
 archivo = 'CeAcheRistian.txt'
 with open(archivo, 'w') as a:
     a.write('Christian Jesús Monroy Gutiérrez\n')
@@ -14,8 +14,15 @@ archivo.close()
 
 archivo = '/home/ceacheristian/py/Prueba/Ejercicios_Python/CeAcheRistian.txt'
 os.remove(archivo)
+'''
 
 archivo = 'abarrotes.txt'
+open(archivo, 'a')
+
+def mostrar_productos():
+        with open(archivo, 'r') as a:
+            a.seek(0)
+            print(a.read())
 
 while True:
     print("1. Añadir producto.")
@@ -33,8 +40,10 @@ while True:
         cantidad = input('Cantidad: ')
         precio = input('Precio: ')
 
-        with open(archivo, 'w'):
-            archivo.write(producto)
+        with open(archivo, 'a') as a:
+            a.write(f"{producto}, {cantidad}, {precio}.\n")
+            print('Lista de productos: ')
+        mostrar_productos()
     elif opcion == "2":
         pass
     elif opcion == "3":
@@ -51,4 +60,5 @@ while True:
         break
     else:
         print('Selecciona una opción válida.')
+
 

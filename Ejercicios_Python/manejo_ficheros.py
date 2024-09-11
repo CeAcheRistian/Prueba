@@ -45,6 +45,7 @@ while True:
             a.write(f"{producto}, {cantidad}, {precio}.\n")
             print('Lista de productos: ')
         mostrar_productos()
+    
     elif opcion == "2":
         nombre = input('Nombre del producto a buscar: ')
         with open(archivo, 'r') as a:
@@ -52,10 +53,7 @@ while True:
                 if nombre in linea:
                     print(linea)
                     break
-            """Otra manera:
-            for line in a.readlines():
-                if line.split(', ')[0] == nombre: Partimos por coma y espacio, porque así se escribió en la opcion 1
-                    print(line)"""
+
     elif opcion == "3":
         nombre = input('Nombre del producto a actualizar: ')
         with open(archivo, 'r') as a:
@@ -68,6 +66,7 @@ while True:
                     a.write(f"{nombre}, {cantidad}, {precio}.\n")
                 else:
                     a.write(linea)
+
     elif opcion == "4":
         nombre = input('Qué producto desea borrar: ')
         with open(archivo, 'r') as a:
@@ -76,6 +75,7 @@ while True:
             for linea in lineas:
                 if nombre != linea.split(', ')[0]:
                     a.write(linea)
+
     elif opcion == "5":
         suma_precios = 0
         with open(archivo, 'r') as a:   
@@ -83,14 +83,29 @@ while True:
                 precio = int((linea.split(', ')[2]).split('.')[0])
                 suma_precios = suma_precios + precio
             print(suma_precios)
+
     elif opcion == "6":
-        pass
+        nombre = input('Nombre del producto: ')
+        with open(archivo, 'r') as a:
+            lineas = a.readlines()
+        with open(archivo, 'w') as a:
+            for linea in lineas:
+                a.write(linea)
+                if nombre == linea.split(', ')[0]:
+                    cantidad = int(linea.split(', ')[1])
+                    costo = int(linea.split(', ')[2].split('.')[0])
+                    venta = costo / cantidad
+                    print(f'El costo por unidad es de {venta}')
+                    break
+
     elif opcion == "7":
         print('El archivo se autodestruirá.')
         os.remove(archivo)
         break
+
     elif opcion == '8':
         mostrar_productos()
+
     else:
         print('Selecciona una opción válida.')
 

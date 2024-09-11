@@ -1,2 +1,3 @@
-Yakult, 3, 19.
-Coca, 2, 10.
+Coca, 1, 30.
+Yakult, 8, 64.
+Pasta, 5, 123.

@@ -1,2 +1,2 @@
-Coca, 1, 25.
-Donitas, 1, 15.
+Yakult, 3, 19.
+Coca, 2, 10.

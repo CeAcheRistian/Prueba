@@ -4,12 +4,12 @@ Su estructura de datos es muy similar a un diccionario de Python. 'llave': <valo
 Se debe importar json para usar los objetos
 Existen cambios en los tipos de datos entre Python y JavaScript, hay que considerarlos al trabajar con json."""
 import json, os
-
+from lxml import etree #Este import es para que no se queje, ya que no leía bien el formstring
 archivo_json = 'presentacion.json'
 presentacion = {
             'nombre': 'Christian',
             'edad': 27,
-            'Fecha de Nacimiento': '01/07/1997',
+            'Fecha_de_Nacimiento': '01/07/1997',
             'Lenguaje': ['Python', 'JavaScript']
         }
 
@@ -79,12 +79,38 @@ class Data():
         self.languages = languages
 
 
+#Se busca transformar la información de un xml específico e introducir esa información en una clase Data, se presenta como un diccionario
 with open(archivo_xml, 'r') as a:
     #Pasamos de un xml a una cadena 
-    root = ET.fromstring(a.read())
+    parser = etree.XMLParser(recover=True) #Estas dos lineas estan porque Python se quejaba, desconozco  el motivo
+    root =etree.fromstring(a.read(), parser=parser)
+    
     nombre = root.find('nombre').text
     edad = root.find('edad').text
-    fecha_nacimiento = root.find('Fecha de Nacimiento').text
-    lenguajes = root.find('Lenguaje').text
-
+    fecha_nacimiento = root.find('Fecha_de_Nacimiento').text
+    lenguajes = []
+    for item in root.find('Lenguaje'):
+        lenguajes.append(item.text)
+    
     user = Data(nombre,edad,fecha_nacimiento,lenguajes)
+    print(user.__dict__)
+
+#Lo mismo para un json
+with open(archivo_json, 'r') as aj:
+    dicc = json.load(aj)
+
+    nombre = dicc['nombre']
+    edad = dicc['edad']
+    fecha_nacimiento = dicc['Fecha_de_Nacimiento']
+    lenguajes = []
+    for value in dicc.values():
+        lenguajes.append(value)
+    user2 = Data(nombre,edad,fecha_nacimiento,lenguajes)
+    
+    #Nos podemos ahorrar todas estas lineas por una sola
+    user2 = Data(dicc['nombre'], dicc['edad'], dicc['Fecha_de_Nacimiento'], dicc['Lenguaje'])
+
+    print(user2.__dict__)
+
+os.remove(archivo_xml)
+os.remove(archivo_json)

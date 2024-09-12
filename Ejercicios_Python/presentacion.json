@@ -1,7 +1,7 @@
 {
     "nombre": "Christian",
     "edad": 27,
-    "Fecha de Nacimiento": "01/07/1997",
+    "Fecha_de_Nacimiento": "01/07/1997",
     "Lenguaje": [
         "Python",
         "JavaScript"

@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 app.secret_key = "abcd"
 @app.route("/") 
-@app.route("/index")#tambien puede ser /index o /index/ #Entre esta linea y la funcion no puede haber espacios
+@app.route("/index")#tambien puede ser /index o /index/ #Entre esta linea y la funcion no puede haber espacios porque es un decorador
 def index(): #a la raiz principal se le denomina index
     return render_template("index.html") #se especifica el archivo html, el cual debe estar dentro de una carpeta llamada templates
     #template es el archivo o plantilla para el rellenado de la vista
@@ -16,8 +16,8 @@ def index(): #a la raiz principal se le denomina index
 def hello(): 
     return render_template("hello.html") 
 
-@app.route("/add", methods= ['POST']) #Existge 4 metodos escenciaels para recibir datos, post para recibir, como un insert, GEt para mandar como un select, PUT para modificar equivalente a un update y DELETE para eliminar
-def add(): #Se tiene aque especificar el metodo por el cual se recibe, por defecto es GET
+@app.route("/add", methods= ['POST']) #Existge 4 metodos esenciales para recibir datos, post para recibir es como un insert, Get para mandar como un select, PUT para modificar equivalente a un update y DELETE para eliminar
+def add(): #Se tiene que especificar el metodo por el cual se recibe, por defecto es GET
     if request.method == 'POST':#El request es la coneccion entre el front y el back. Es la manera de consumir datos de una api o pagina web
         nombre = request.form["usuario_id"]
         apellido = request.form["ap_pat"]
@@ -34,13 +34,11 @@ def add(): #Se tiene aque especificar el metodo por el cual se recibe, por defec
 @app.route("/crear")
 def crear_cuenta():
     return render_template("crear_cuenta.html")
- 
- 
+
 
 @app.route("/presentar_usuarios")
 def presentar_usuarios():
     datos= c.select_usuarios()
-
     return render_template("presentar_usuarios.html", datos_usuario= datos)
 
 if __name__ == "__main__":

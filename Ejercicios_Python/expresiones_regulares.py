@@ -5,6 +5,7 @@ import re
 
 #https://cheatography.com/davechild/cheat-sheets/regular-expressions/
 #https://docs.python.org/es/3/library/re.html#module-re
+#https://regex101.com/
 
 #Expresión regular para encontrar números en una cadena
 cadena = 'Hola,21 esta es 32 una 10000cadena de 901 texto7'
@@ -27,5 +28,6 @@ print(match)
 #Expresión regular para validar número de teléfono
 telefono = '55-43-22-99-52'
 pattern = r'^(\d{2}\D?){5}$'
+# tambien r'^\+?[\d\s]{3,}$' esta encaja para los +XX que hay de la lada, pero solo omite espacios en blanco
 match = re.search(pattern, telefono)
 print(match)

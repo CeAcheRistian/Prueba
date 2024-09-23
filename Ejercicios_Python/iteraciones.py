@@ -40,3 +40,12 @@ class iterador():
 
 objeto_iterable = iterador(lista_numero)
 for i in objeto_iterable: print('clase iteradora: ',i) 
+
+for i in reversed(lista_numero):
+    print(f"lista al revés: {i}")
+
+for indice,elemento in enumerate(['c','j','m','g']):
+    print(f'Indice: {indice}, Elemento: {elemento}')
+
+#Con el asterisco se quedan "guardados" todos los valores que adquiere i, se imprime en consola todos los valores del rango en una sola linea
+print(*[i for i in range(1,11)],sep='\n') 

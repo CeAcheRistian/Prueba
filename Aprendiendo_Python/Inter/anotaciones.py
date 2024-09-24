@@ -48,5 +48,6 @@ from typing import Tuple
 
 Connection = Tuple[str,str,int]
 #El tipo de dato es como la variable declarada arriba
-def database_connection(connection:Connection | None):
-    pass
+def database_connection(connection:Connection) -> Connection | None:
+    if connection[0] != 'root':
+        return

@@ -4,7 +4,7 @@
 # <nombre> = <valor>
 #Deben ser nombres claros y precisos
 nombre = "Christian"
-nombre = 'Jesús'
+nombre : str = 'Jesús'
 #Para las varaibles con más de un nombre se ocupa el snake_case, nomeclatura usada por Python
 nombre_completo = "Christian Jesús Monroy Gutiérrez"
 #Existen palabras que no pueden ser usadas como etiquetas de variables, estas de denominan palabras reservadas, como lo son:

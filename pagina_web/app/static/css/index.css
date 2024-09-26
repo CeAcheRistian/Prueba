@@ -1,10 +1,10 @@
 /*Este es un comentario*/
 /*
 Para agregar un estilo a la fuente se usa font-size.
-Al igual que html, css es un lenguaje?? de etiquetas, por eso se escribe el contenido dentro de una etiqueta p
+Al igual que html, css es un lenguaje?? de etiquetas, por eso se escribe el contenido dentro de una etiqueta p (etiqueta que también existe en html)
 Para visualizar los cambios se debe importar en la plantilla html correspondiente
 */
 p{
-    font-size: 40px;
+    font-size: 40px; /*Tamaño de la fuente*/
     text-decoration: underline; /*Este es el subrayado*/
 }

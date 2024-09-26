@@ -1,0 +1,36 @@
+<!--Este es un comentario-->
+<!--Para que VSC escriba por si solo esta maqueta de html solo se escribe: ! y se pulsa enter-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!--Usamos una de las funcionalidades de jinja, el título de la página se modifica desde la vista no desde la plantilla del html-->
+    <title>{{data.titulo}}</title>
+    
+    <!--Para ver los cambios hechos en el archivo css correspondiente escribimos link y enter en la opción dada por VSC.
+    Posteriormente dentro del atributo href la direccion donde se encuentra el archivo css que queremos importar o MEJOR AÚN usamos el lenguaje jinja
+    Se usa url_for para indicar la url desde la cual vamos a hacer la importación. Como primer parámetro la carpeta donde se encuentra el css. El segundo se especifica
+    en el filename la ruta exacta del archivo se que desea importar. Practicamente una referencia a qué codigo se quiere aquí-->
+    <!--El estilo que se defina en el css afectará a todas las rutas que hereden de la plantilla base-->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css')}}">
+</head>
+<body>
+    <!--Dentro del cuerpo del html se escribe el mensaje-->
+    <h1>{{data.encabezado}}</h1>
+    
+
+    <!--Para añadir un archivo JS se añade la etiqueta script y en su atributo source (src) se especifica la ruta del archivo-->
+    <!-- El atributo src va dentro de la misma etiqueta no en medio-->
+    <script src="{{ url_for('static', filename='js/index.js')}}"></script>
+
+    <!--Ya estando este codigo dentro de layout y no en index, creamos un bloque de código el cual va a ser el único que cambie, todo lo demás será identico-->
+    <!--Ya que esto es una platilla base y se buscar reutilizar la mayor cantidad de código posible-->
+    <!--En este bloque se escribirá el contenido específico de cada plantilla que herede de layout-->
+    <!--Solo las plantillas hijas podrán modificar este bloque de contenido-->
+    {% block content %}
+    {% endblock %}
+
+</body>
+</html>

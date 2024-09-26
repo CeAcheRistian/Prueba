@@ -1,23 +1,8 @@
-<!--Este es un comentario-->
-<!--Para que VSC esciba por si solo esta maqueta de html solo se escribe: ! y se pulsa enter-->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!--Usamos una de las funcionalidades de jinja, el título de la página se modifica desde la vista no desde la plantilla del html-->
-    <title>{{data.titulo}}</title>
-    
-    <!--Para ver los cambios hechos en el archivo css correspondiente escribimos link y enter en la opción dada por html
-    Posteriormente dentro del atributo href la direccion donde se encuentra el archivo css que queremos importar o MEJOR AÚN usamos el lenguaje jinja
-    Se usa url_for para indicar la url desde la cual vamos a hacer la importación. Como primer parámetro la carpeta donde se encuentra el css. El segundo se especifica
-    en el filename la ruta excata del archivo se que desea importar. Practicamente una referencia a qué codigo se quiere ahí-->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css')}}">
-</head>
-<body>
-    <!--Dentro del cuerpo del html se escribe el mensaje-->
-    <h1>{{data.encabezado}}</h1>
-    <p>Bienvenido</p>
-</body>
-</html>
+{% extends "./layout.html" %}
+<!--Se especifica que se hereda de la plantilla base. Como index y layput estan en la misma carpeta entonces se escribe ./-->
+
+<!--TODO lo que esté en este bloque será sustituido en el bloque dentro de layout-->
+{% block content %}
+<!--Este es el texto o etiqueta que se ve afectado por el código css-->
+<p>Bienvenido</p>
+{% endblock %}

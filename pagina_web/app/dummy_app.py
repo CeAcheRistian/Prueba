@@ -16,7 +16,7 @@ def hola_mundo():
 #Al hacer el comando pip list se despliegan los modulos/utilidades/herramientas instaladas
 #En la lista se encuentra Jinja2, un  lenguaje/motor de plantillas que viene con flask y django para páginas web
 #COn jinja se puede renderizar archivos html y mostrarlos en la app web
-
+#Se crea una carpeta de nombre templates, la cual flask reconoce que se encuentren los archivos html
 #Después de haber creado la carpeta templates y el html ...
 
 @app.route('/1')
@@ -30,6 +30,11 @@ def saludar():
     }
     return render_template('index.html', data=data)
 
+
+#Hasta este momento es html puro, pero se necesita más que eso: archivos css y JS
+#Se crea la carpeta static le cual flask reconoce al igual que templates. En static se almacenan todo tipo de recursos para la app web
+#Dentro de static se crean dos subcarpetas css y js y archivos con extenciones del mismo nombre.
+#Después de darle formato en el archivo de css ..
 
 
 """

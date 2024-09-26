@@ -1,1 +1,1 @@
-alert("Este es un mensaje de index.js");
+//alert("Este es un mensaje de index.js");

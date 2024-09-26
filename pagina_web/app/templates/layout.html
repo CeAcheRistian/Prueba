@@ -32,5 +32,10 @@
     {% block content %}
     {% endblock %}
 
+    <!--Con esta etiqueta hr/ separas visualmente el codigo. Tal cual se ve una linea-->
+    <hr/>
+    <!--escribes a y enter. Se especifica a donde queremos redirigirnos. Escribimos dentro del primer parámetro el nombre de la función de la vista correspondiente-->
+    <a href="{{ url_for('saludar',)}}">saludar</a>
+    <a href="{{ url_for('contacto',)}}">contacto</a>
 </body>
 </html>

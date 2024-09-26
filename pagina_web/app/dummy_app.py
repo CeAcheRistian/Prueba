@@ -26,7 +26,7 @@ Definimos la función donde se especifican los cambios y llamamos a app.add_url_
 #Se crea una carpeta de nombre templates, la cual flask reconoce que se encuentren los archivos html
 #Después de haber creado la carpeta templates y el html ...
 
-@app.route('/1')
+@app.route('/saludar')
 def saludar():
     #Con este return se hace la conección entre el html y flask
     #return render_template('index.html', titulo='Página principal') #el param1 es el documento a señalar dentro de templates, el segundo especifica el titulo de la pagina, sin tocar html
@@ -52,7 +52,27 @@ def saludar():
 #Así reutilizamos bastante código y una mejor estructura
 #Entonces creamos layout.html y pasamos todo el contenido de index.html a layout
 
+@app.route('/contacto')
+def contacto():
+    data = {
+        'titulo': 'Contactos',
+        'encabezado': 'Hola'
+    }
+    return render_template('contacto.html',data=data)
 
+#Ahora vamos a implementar dinamismo en la página. Creamos otra ruta pero se le agrega un numero parámetro, este parámetro va entre <picoparéntesis>
+#El nombre que le demos también debe ser el mismo para el parámetro de la función.
+#Al ingresar a la nueva url, esta es dinámica con el nombre que se le dote
+@app.route('/saludo/<nombre>')
+def saludo(nombre): #SE REPITE EL NOMBRE DE LA FUNCIÓN Y SUS PARÁMETROS
+    return f'Hola {nombre}'
+
+
+#para ejemplificar un poco más el dinamismo se hace una suma. Como estamos tratando con números se especifica el tipo de dato obligatoriamente en la ruta
+#Cada parámetro se separa con una diagonal /, y también se cacha como parámetro en la función, con el mismo nombre.
+@app.route('/suma/<int:valor_1>/<int:valor_2>')
+def suma(valor_1: int, valor_2: int) -> int:
+    return f'La suma es: {str(valor_1 + valor_2)}' #No se puede imprimir un valor numérico, por eso se castea a una cadena
     
 if __name__ == "__main__": #Comprobación que es un archivo principal
     #Con run podemos iniciar el servidor

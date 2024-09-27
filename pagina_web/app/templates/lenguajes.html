@@ -1,0 +1,24 @@
+{% extends './layout.html'%}
+
+<!--ul es de unordered list, lista no ordenada
+El ciclo for y la condicional if  se escribe de la misma manera, pero hay que cerrarlo o se obtiene un error
+li es por list item, tal cual hace una lista con los elementos que se le pasen
+Observar que se dentro del for escribe el elemento dentro de doble corchete,haciendo uso de jinja2 todo el tiempo-->
+{% block content %}
+{# Este es un comentario en jinja2 #}
+<ul>
+    {# Una forma de hacerlo: {% if data.hay_lenguajes %}  #}
+
+    {# En jinja2 en vez de tener un punto para denotar que se llama a una función se usa pipeline | #}
+    {% if data.lenguajes|length > 0%}
+
+    {% for lenguaje in data.lenguajes%}
+    <li>
+        {{lenguaje}}
+    </li>
+    {% endfor%}
+    {% else %}
+    <h2>No existen lenguajes en el listado</h2>
+    {% endif%} 
+</ul>
+{% endblock %}

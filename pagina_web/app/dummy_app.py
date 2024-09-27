@@ -73,7 +73,17 @@ def saludo(nombre): #SE REPITE EL NOMBRE DE LA FUNCIÓN Y SUS PARÁMETROS
 @app.route('/suma/<int:valor_1>/<int:valor_2>')
 def suma(valor_1: int, valor_2: int) -> int:
     return f'La suma es: {str(valor_1 + valor_2)}' #No se puede imprimir un valor numérico, por eso se castea a una cadena
-    
+
+
+#Jinja también posee condicionales y ciclos, ejemplo de ello:
+@app.route('/lenguajes')
+def lenguajes():
+    data: dict = {
+        'lenguajes' : ['Python', 'JavaScript', 'Cobol', 'Java', 'Kotlin', 'Swift']
+    }
+    return render_template('lenguajes.html', data = data)
+
+
 if __name__ == "__main__": #Comprobación que es un archivo principal
     #Con run podemos iniciar el servidor
     app.run(debug=True, port=5000) #Con el parámetro debug, iniciamos el modo de depuración, esto evita que estemos reiniciando el servidor ante cualquier cambio

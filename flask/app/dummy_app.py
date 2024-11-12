@@ -115,7 +115,7 @@ def datos():
 def before_request():
     print("antes de la petición")
 
-#El método after requiere una respuesta a devolver, por convención es response, se pasa como argumento y se retorna o dará eror
+#El método after requiere una respuesta a devolver, por convención es response, se pasa como argumento y se retorna o dará error
 @app.after_request
 def after_request(response):
     print('después de la petición') #Los mensajes de antes,durante y después se verán en la consola

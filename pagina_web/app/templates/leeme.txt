@@ -1,1 +1,0 @@
-Se llama templates por convención, dentro de esta carpeta se encuentran todas las plantillas html que compondrán la app web

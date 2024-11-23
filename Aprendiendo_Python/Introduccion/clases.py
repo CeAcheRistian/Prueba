@@ -8,7 +8,7 @@ class Usuario:
 chris = Usuario()
 
 #Existen dos tipos de atributos, los atributos de clase y los atributos de la instancia
-#Los atributos de clase le pertenecen a la clase, para utilizarlos, se debe usar la clase. Los de instancia, le pertenecen a un objeto y oara usarlos se trabaja con el objeto
+#Los atributos de clase le pertenecen a la clase, para utilizarlos, se debe usar la clase. Los de instancia, le pertenecen a un objeto y para usarlos se trabaja con el objeto
 class User:
     name = 'default' #Estos dos son atributos de clase, le pertenecen a la clase y para usarlos se debe usar la clase
     age = ''

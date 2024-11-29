@@ -19,5 +19,5 @@ None
 #Con % es el módulo , es decir, el residuo de la división
 
 #Existen 8 maneras de representar un valor falso
-'''False, None, 0, 0.0, ''/"", []. (), {} '''
+'''False, None, 0, 0.0, ''/"", [], (), {} '''
 #Todo lo demás que no esté en este listado, se considera como verdadero

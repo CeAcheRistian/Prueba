@@ -1,4 +1,4 @@
-#Las variables poseen un Scope, su funcionamiento dependerá de en qué bloque de código se encuentren y de que scope tengan
+#Las variables poseen un Scope, su funcionamiento dependerá de en qué bloque de código se encuentren y de que scope o alcance tengan
 
 animal='Leon'
 def ejemplo():

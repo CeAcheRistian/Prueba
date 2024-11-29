@@ -26,3 +26,63 @@ try:
 except ZeroDivisionError as error:
     print('division entre cero no posible')
     print(error)
+
+    """Existen dos bloques opcionales, else y finally"""
+else:
+    # El bloque else se ejecuta si el bloque try funciona correctamente, es decir, no hubo ningún error
+    pass
+finally:
+    #El bloque finally se ejecuta siempre, después de todos los anteriores.
+    pass
+
+"""
+HASTA el momento, nosotros solo cachamos el error ZeroDivisionError, pero que pasa si alguno de las variables almacena una cadena de texto o si quiero dividir con una variable que jamás ha sido nombrada. Debemos prepararnos para todos los tipos de excepciones que nuestro código pueda experimentar.
+
+Para hacer esto, agregamos bloques except con su excepción especifica
+"""
+try:
+    numbers = [0,1,2,3]
+    num1 = numbers[1]
+    num2 = numbers[100]
+    div = num1 / num3
+    print(div)
+except ZeroDivisionError as error:
+    print('division entre cero no posible')
+    print(error)
+
+except NameError as error:
+    print("Lo sentimos, la variable no existe")
+    print(error)
+
+    "Queda en nosotros validar todos los errores posibles."
+except IndexError as error:
+    print("No es posible ingresar a ese indice")
+    print(error)
+
+
+# Es posible cachar todos los errores habidos y por haber, haciendo referencia a la clase padre ´Exception´.
+try:
+    numbers = [0,1,2,3]
+    num1 = numbers[1]
+    num2 = numbers[100]
+    div = num1 / num3
+    print(div)
+except Exception as error:
+    print(f"error: {error}, no fue posible continuar con la ejecución")
+
+"Exception hereda de BaseException, se puede utilizar esta base pero no es usual para estos errores."
+
+
+"""Existe la palabra reservada ´raise´, para enviar una excepción a nuestra voluntad"""
+def validate_username(username):
+    if len(username) > 6: 
+        return True
+    else:
+        raise Exception("El username debe tener una longitud minima de 6 caracteres")
+
+# Pero levantar la excepcion termina el programa de forma abrupta. Debemos cachar la excepcion que enviamos con un bloque try y except
+try:
+    v = validate_username("alv")
+    print(v)
+except Exception as error:
+    print(error)

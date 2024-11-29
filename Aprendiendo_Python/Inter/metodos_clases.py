@@ -122,7 +122,7 @@ class Pizza:
                 f'{self.ingredients})')
 
     def area(self):
-        return self.circle_area(self.radius)
+        return self.circle_area(self.radius) #Acá un método de instancia llama a un método estático para hacer una operación. Pero esto es interno
 
     @staticmethod
     def circle_area(r):

@@ -172,3 +172,14 @@ try:
 except UsernameException as error:
     print(error)
     error.show_notes()
+
+"""Suprimiendo errores.
+La primer forma es con el bloque try-except, pero no notificamos la excepción, colocamos un pass en el bloque except.           Obviamente una mala práctica.
+
+La segunda forma es con la función supress del modulo contextlib"""
+from contextlib import suppress
+
+#Aquí suprimimos todas las excepciones
+with suppress(Exception):
+    print(10 / 0)
+print('bye')

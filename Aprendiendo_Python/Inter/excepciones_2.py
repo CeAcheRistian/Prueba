@@ -86,3 +86,89 @@ try:
     print(v)
 except Exception as error:
     print(error)
+
+"""Es posible crear nuestras propias excepciones.
+Esto se hace creando una clase que herede de Excepcion"""
+class UsernameAdminException(Exception):
+
+    "También es posible pasarle una cadena a nuestras excepciones para que muestren más información. Pero para hacer esto, debemos sobrecargar el constructor de la clase padre."
+    def __init__(self):
+        self.message = 'El usuario no puede ser admin.' # Para poder visualizar este mensaje debemos llamar al método init de la clase padre.
+        super().__init__(self.message) # Con esto podremos imprimir el objeto error en el bloque except
+
+class UsernameLengthException(Exception):
+    def __init__(self, username): #Hacemos el mensaje más personalizado.
+        self.message = f'El {username} debe no cumple con los requisitos.'
+        super().__init__(self.message)
+
+# Dentro de esta función de validación mandamos a llamar a las excepciones que creamos
+def validate_usernames(username):
+    if username == 'admin':
+        raise UsernameAdminException()
+    if len(username) < 6: 
+        raise UsernameLengthException(username) # Pasamos los parámetros esperados
+
+    return True
+
+try:
+    print(validate_usernames('admin'))
+except UsernameAdminException as error:
+    print(error, 'Lo sentimos, no fue posible completar la operación.')
+
+except UsernameLengthException as error:
+    print(error, 'La longitud mínima son 6 caracteres.')
+
+"Se recomienda ampliamente que las excepciones propias se almacenen en un modulo, e importamos donde las vayamos a usar."
+
+"A partir de python3.11 es posible lanzar un grupo de excepciones y no solo 1."
+'Para hacer esto utilizamos la clase ExceptionGrop, la cual recibe dos argumentos, una cadena describiendo el grupo y el listado de excepciones'
+try:
+    raise ExceptionGroup(
+        'Excepciones de validación del usuario',
+        [UsernameAdminException(), UsernameLengthException('user')])
+except ExceptionGroup as group:
+    print(group)
+
+try:
+    raise ExceptionGroup(
+        'Excepciones de validación del usuario',
+        [UsernameAdminException(), UsernameLengthException('user')])
+
+except *UsernameAdminException:
+    print('llamando individualmente a cada excepcion del grupo.')
+except *UsernameLengthException:
+    print('desempaquetado de excepciones del grupo ')
+
+"Igualmente a partir de la versión 3.11 es posible tener notas a las excepciones. Dotando de más contexto a los lectores"
+class UsernameException(Exception):
+    def __init__(self):
+        super().__init__('Usuario no valido.')
+
+    #Validamos si se tienen notas en la instancia.
+    def is_valid_to_raise(self):
+        return len(self.__notes__) > 0
+    
+    #Método para imprimir las notas
+    def show_notes(self):
+        for note in self.__notes__:
+            print(note)
+
+def validator(username):
+    username_error = UsernameException()
+    if len(username) < 6:
+
+        # Es aquí donde podemos agregar una nota
+        username_error.add_note('Longitud mínima de 6.')
+    if '@' in username:
+        username_error.add_note('Caracter @ no soportado.')
+    
+    #Para saber si la instancia posee notas
+    if username_error.is_valid_to_raise():
+        raise username_error
+    
+    return True
+try:
+    print(validator('user'))
+except UsernameException as error:
+    print(error)
+    error.show_notes()

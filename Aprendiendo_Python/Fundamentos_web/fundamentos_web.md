@@ -79,4 +79,69 @@ Otro protocolo clave de la web en la capa de aplicación es el __protocolo DNS__
 
 La web requiereque :Usemos el protocolo DNS para obtener una IP; Usar esta IP para identificada para enviar otra petición pero ahora usando el protocolo HTTP.
 
-## Protocolo HTTP
+## Protocolo HTTP (Hyper Text Transfer Protocol)
+El protocolo HTTP es el protocolo de la web, se ubica en la capa de aplicación, por lo que podemos pensar en este como la puerta para que nuestro código se comunique con el internet y podamos intercambiar datos. 
+
+Sus características principales son:
+- Es simple, puede ser leído por humanos.
+- Es extendible. Nuevas funcionalidades pueden ser implementadas usando encabezados. Los __JWT__ es un ejemplo de la extendibilidad, porque no pertenece al HTTP puro.
+- No tiene estado, pero si tiene sesiones. Cada mensaje es independiente. No guarda infomación el servidor, en todo caso lo haría la base de datos, pero el servidor no persiste ninguna información. Para mantener un estado por un corto tiempo se usan las sesiones, autorización y autenticación se ven involucrados en este proceso.
+- Intercambian información en una capa de transporte de confianza. Como lo es el protocolo TCP. 
+
+### Solicitud HTTP
+En la solicitud que va del cliente al servidor podemos encontrar: 
+- Versión del protocolo HTTP (porque hay varias)
+- URL (Uniform Resourse Locator)
+- Método HTTP
+- Encabezados HTTP
+- Cuerpo HTTP (opcional)
+
+La versión HTTP define qué implementación del protocolo vamos a utilizar, esta versión determina también qué información puedes enviar y cómo se manejará. En la versión HTTP 1, solo se mandaba el path y el verbo.En HTTP 1.1 por cada petición se enlazaba con un protocolo TCP, afectando el rendimiento del servidor por lo que implica abrir una conexión tcp por cada petición. En la versión HTTP 2 con una sola conexión TCP podemos mandar multiples peticiones. En HTTP 3 la diferecnia es la capa de transporte, ya que usa el protocolo _Quic_ 
+
+La URL es un identificador de recursos de internet. Se divide en diferentes partes: El esquema (HTTP o HTTPS), el dominio, el puerto (no siempre aparece, si no aparece es el 80 o 443 respectivamente), el path al archivo del servidor, los parámetros y el ancla o anchor.
+![alt text](image-7.png)
+
+Las URL en el backend nos sirven para identificar la petición del cliente, una imagen, un video, ...
+
+El método HTTP, también conocido como verbo es un identificador para indicarle al servidor que acción espera que realice con el recurso de la URL. Algunos de ellos:
+![alt text](image-8.png) Esta imagen muestra la base de la arquitectura REST
+
+Los navegadores solo pueden enviar dos verbos, GET y POST, algunas arquitecturas como REST los demás verbos se simulan.
+
+Los encabezados HTTP son datos organizados en formato clave/valor arbitrarios, estos nos permite extender la funcionalidad del protocolo. Existen encabezados predefinidos que se envían en cada solicitud y que envían a nuestro servidor información que pueda sernos útil. (user-agent : el navegador donde se realiza la petición, referer: la url de donde ocurre la petición, content-type: que tipo de respuesta se espera del servidor en qué formato debe venir, normalmente es application/json). ![alt text](image-9.png)
+
+El cuerpo de la petición HTTP puede contener información adicional que enviamos al servidor. Esta información puede enviarse en distintos formatos, apoyándose del encabezado content-type.
+![alt text](image-10.png)
+
+### Respuesta HTTP
+En una respuesta HTTP encontramos: 
+- Código de estado (status code)
+- Encabezados HTTP
+- Cuerpo HTTP (opcional)
+
+El código de estado le permite saber al cliente cuál fue el resultado de la petición.  Los códigos de estado se dividen en los siguientes grupos:
+- Del 100 al 199 Informativo
+- Del 200 al 299 Éxito
+- 300 al 399 Redirección
+- 400 al 499 Errores del cliente
+- 500 al 599 Errores del servidor
+
+Estos códigos dotan de información extra al cliente. No son respuestas automáticas, como backend se le indica al cliente el error del cliente.
+
+Los encabezados tienen la misma forma que en las solicitudes.
+
+En el cuerpo HTTP, aquí es donde iría el html de una página web, el contenido del archivo solicitado y en sí, el contenido que deseamos enviar el cliente.
+
+Ejemplo de una solicitud:
+![alt text](image-11.png)
+
+Ejemplo de una respuesta:
+![alt text](image-12.png)
+
+## Herramientas para peticiones HTTP
+
+Existen herramientas para visualizar los vensajes y generarlos. Como __cURL__, __Postman__: Aplicación visual con la que podemos generar solicitudes HTTP utilizando la interfaz gráfica del programa, también podremos visualizar su respuesta. __REST Client para VSC__: Herramienta para crear archivos con la información para generar solicitudes HTTP y correrlas desde VSC, para usarlo, creamos archivos con la extensión .http y dentro se escribe la solicitud, para aprender a usarlo existe la documentación donde especifican la sintaxis.
+
+## Otras herramientas útiles
+- Who.is : Web que permite explorar los name servers que se usan con el protocolo DNS, origen del dominio y más.
+- Cloudflare : Protección contra ataques de DDos, distribución de archivos estáticos, caché, analytics.

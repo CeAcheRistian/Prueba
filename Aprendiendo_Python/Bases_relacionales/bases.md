@@ -75,3 +75,5 @@ Los tipos de instrucciones de SQL:
 - TCL: Transaction Control Language.
 
 # Continua en el PDF
+
+# Ejemplos y ejercicios: [aquí](https://tech.io/playgrounds/123318/sql-facilito)

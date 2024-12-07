@@ -89,32 +89,124 @@ CREATE TABLE ChallengeMenu (
 	FOREIGN KEY (MenuID) REFERENCES Menu(MenuID)
 );
 
----------------------------------------------------
+# ---------------------------------------------------
+# Tabla intermediaria entre los retos y las clases.
+CREATE TABLE ChallengeResource (
+	ChallengeID INT NOT NULL, 
+	ResourceID INT NOT NULL,
+	PRIMARY KEY (ChallengeID, ResourceID),
+	FOREIGN KEY (ChallengeID) REFERENCES Challenge(ChallengeID),
+	FOREIGN KEY (ResourceID) REFERENCES Resource(ResourceID)
+);
 
+# Tabla para la introduccion a los cursos
 CREATE TABLE Resource (
-    Name VARCHAR(100) NOT NULL PRIMARY KEY,
-    ResourceTypeID INT NOT NULL,
-    LanguageID INT NOT NULL,
-    Link VARCHAR(100),
+    ResourceID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	Name VARCHAR(100) NOT NULL,
+    ResourceTypeID TINYINT NOT NULL,
+    LanguageID SMALLINT NOT NULL,
+    URL VARCHAR(100),
 
     FOREIGN KEY (ResourceTypeID) REFERENCES ResourceType(ResourceTypeID)
     FOREIGN KEY (LanguageID) REFERENCES Language(LanguageID)
 )
 
+# Tabla para el tipo de curso
 CREATE TABLE ResourceType (
-    ResourceTypeID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    Name VARCHAR(50) NOT NULL
+    ResourceTypeID TINYINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    Name VARCHAR(50) NOT NULL,
+	IsActive TINYINT DEFAULT 1
 )
 
+# Tabla para el idioma de los cursos
 CREATE TABLE Language (
-    LanguageID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    LanguageID SMALLINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     Name VARCHAR(50) NOT NULL
 )
 
+
+# ---------------------------------------------------
+# Tabla para los cursos con toda su información
 CREATE TABLE Course (
-    Name VARCHAR(100) NOT NULL PRIMARY KEY,
-    Teacher VARCHAR(100) NOT NULL,
+    CourseID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	Name VARCHAR(100),
+    TeacherID INT NOT NULL,
     Description VARCHAR(300) NOT NULL,
-    Content VARCHAR(300) NOT NULL,
-    Duration INT NOT NULL,
+    Duration DECIMAL NOT NULL,
+	CourseURL VARCHAR(100),
+	VideoURL VARCHAR(100),
+
+	FOREIGN KEY (TeacherID) REFERENCES Teacher(TeacherID)
 )
+
+CREATE TABLE Teacher (
+	TeacherID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	Name VARCHAR(100) NOT NULL,
+	IsActive TINYINT DEFAULT 1
+)
+
+CREATE TABLE CourseContent (
+	ContentID BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	Name VARCHAR(100) NOT NULL,
+	Secuence SMALLINT NOT NULL, 
+	IsActive TINYINT DEFAULT 1,
+	CourseID INT NOT NULL,
+
+	FOREIGN KEY (CourseID) REFERENCES Course(CourseID)
+)
+
+# ---------------------------------------------------
+
+CREATE TABLE Bootcamp (
+	BootcampID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	Name VARCHAR(100) NOT NULL,
+	Description VARCHAR(300) NOT NULL,
+	StartDate DATE,
+	Duration TINYINT NOT NULL,
+	Schedule VARCHAR(100),
+	BootcampURL VARCHAR(100),
+	VideoURL VARCHAR(100),
+	BootcampTeacherID INT NOT NULL,
+	BootcampDifficultyID INT NOT NULL,
+
+	FOREIGN KEY (BootcampTeacherID) REFERENCES BootcampTeachers(BootcampTeacherID)
+	FOREIGN KEY (BootcampDifficultyID) REFERENCES BootcampDifficulty(DificultyID)
+)
+
+CREATE TABLE BootcampContent (
+	ContentID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	Name VARCHAR(100) NOT NULL,
+	IsActive TINYINT DEFAULT 1,
+	BootcampID INT NOT NULL,
+
+	FOREIGN KEY (BootcampID) REFERENCES Bootcamp(BootcampID)
+)
+
+CREATE TABLE BootcampDifficulty (
+	DificultyID TINYINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	Description VARCHAR(300) NOT NULL
+)
+
+CREATE TABLE BootcampTeachers (
+	TeacherID INT NOT NULL AUTO_INCREMENT,
+	BootcampID INT NOT NULL AUTO_INCREMENT,
+	PRIMARY KEY (TeacherID, BootcampID),
+	TeacherStatusID TINYINT NOT NULL,
+
+	FOREIGN KEY (TeacherID) REFERENCES Teacher(TeacherID),
+	FOREIGN KEY (BootcampID) REFERENCES Bootcamp(BootcampID)
+)
+
+CREATE TABLE TeacherStatusID (
+	StatusID TINYINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	Descripcion VARCHAR(100),
+)
+
+/* 
+	Dos ejemplos para seleccionar datos usando JOIN:
+	Select * FROM Bootcamp B INNER JOIN BootcampTeachers BT ON B.BootcampID = BT.BootcampID INNER JOIN Teacher T ON T.TeacherID = BT.TeacherID;
+	Unimos las tablas Bootcamp, BootcampTeachers y Teacher para obtener los datos de los profesores que imparten los bootcamps asignandole un alias a cada tabla.
+
+	SELECT * FROM Bootcamp B, BootcampTeachers BT, Teacher T WHERE B.BootcampID = BT.BootcampID AND T.TeacherID = BT.TeacherID;
+	Lo mismo que el ejemplo anterior pero sin usar INNER JOIN, se hace la unión de las tablas con una coma y se especifica la condición en el WHERE.
+*/		

@@ -77,3 +77,4 @@ Los tipos de instrucciones de SQL:
 # Continua en el PDF
 
 # Ejemplos y ejercicios: [aquí](https://tech.io/playgrounds/123318/sql-facilito)
+

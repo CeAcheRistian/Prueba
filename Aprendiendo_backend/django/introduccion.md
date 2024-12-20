@@ -67,3 +67,67 @@ Vamos a settings.py del proyecto, vamos a la constante _TEMPLATES_, contiene una
 
 ## Modificando el html
 Por defecto tiene 3 cartas, borramos 2 porque solo tenemos 1 producto, y creamos un for que envuelva la tarjeta, y dentro, en vez que diga producto 1, pues pasamos el nombre del producto, lo mismo con el precio. Para la imagen, en una etiqueta img, en el aributo src especificamos: _producto.imagen.url_ el objeto, la imagen. Pero esto todavía no muestra la imagen, falta modificar el urls.py del proyecto. Importamos static de la configuración de django y a la lista de la url le sumamos (literalmente) la función static, la cual recibe como argumentos la configuración (que debemos importar) donde especificamos que queremos acceder a los archivos multimedia, así como su direcció específica. Estos dos los toma del archivo settings.py
+
+# Siguiente clase de Django
+
+## Conectandonos a otra base de datos
+Por defecto, django usa sqlite, pero acepta muchos tipos de motores de bases. [link de la documentación](https://docs.djangoproject.com/en/5.1/ref/databases/)
+
+Usaremos MySQL para este ejemplo, entonces debemos crear la base de datos: _CREATE DATABASE nombre CHARACTER SET utf8;_
+
+Dentro del archivo settings.py debemos especificar que queremos usar otra base de datos. Algo así:
+
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.mysql",
+        "OPTIONS": {
+            "read_default_file": "/path/to/my.cnf",
+        },
+    }
+}
+
+Como vemos hay una llave para leer un archivo por defecto y su valor es un path. Pues es ahí donde debemos guardar los datos de la base, usuario, contraseña,... para la conexión a la base.
+
+Pero ese archivo no existe. debemos crearlo y dentro hacemos:
+
+[client]  
+database = NAME  
+user = USER  
+password = PASSWORD  
+default-character-set = utf8  
+
+Por supuesto que colocando el nombre de la base y los datos que corresponden. y en settings debemos modificar el path para que apunte a este archivo.
+
+Volvemos a correr el servidor y no debería dar problema. (Se debe instalar el motor de bases de datos anteriormente.) Pero nos da la adverterncia que no se han aplicado las migraciones de los datos. Hacemos: _python3 manage.py migrate_
+
+No tenemos ningún superusuario ya que la base de datos está limpia.
+
+## Configuración de ambientes de desarrollo
+Normalmente existen 3:
+- Desarrollo (development)
+- Pruebas (QA-Testing)
+- Producción (production)
+
+Cada uno de estos tiene sus propias configuraciones, todo inicia en desarrollo, pero las otras dos tienen gran parte de sus características. 
+
+Para las configuraciones específicas de los ambientes, se puede crear una carpeta y dentro archivos con las configuraciones, o solo un archivo y ahí dentro todas las configuraciones, o pedirle a una herramienta externa que nos configure o de la maqueta de las configuraciones, ...
+
+Dentro de settings/base.py copiamos todo el contenido que había en el archivo settings.py del proyecto de django, también movemos a esta carpeta el archivo de my.cnf (lo agregamos al gitignore).
+
+Creamos otros dos archivos que simbolizan los ambientes de desarrollo y producción.
+
+Importamos todo de base en prodcuccion.py y cambiamos la configuración del debug a false. Y en el ambiente de desarrollo tenemos la configuración de la base de datos, la borramos de base y la colocamos en local.py
+> Se debe modificar la ruta de la configuración del .cnf
+
+En producción también colocamos la base de datos, pero la ruta del archivo .cnf es diferente.
+
+Para que django tome estos archivos de configuracion debemos especificarle al momento de correr el servidor: _python manage.py runserver --settings=settings.local_ colocamos la bandera --settings y especificamos la ruta
+
+## Nuevos modelos
+Hasta el momento solo tenemos un modelo para los productos. Pues vamos a agregar modelos para los usuarios, marcas, comentarios y likes para los productos.
+
+Para las llaves foraneas, se tiene un método y el primer argumento es el nombre de la clase a la cual se está haciendo referencia, y después especificamos en la propiedad on_delete el valor de CASCADE. Esto se escribe por si borramos un registro también se elimine la referencia. Como 3er argumento le damos un nombre a esta relación, el cual debe ser afin a la tabla donde se está escribiendo esta llave foránea.
+
+Al terminar debemos hacer las migraciones correspondientes con _makemigrations_, peeeero, debemos especificarle donde está la configuración de la base de datos. Peeeero, ponerle la bandera _--settings_ a cada rato es un fastidio, así queeeee
+
+Si al hacer las migraciones hay problema, borramos los archivos generados al haecr el makemigrations, estos se encuentran en la carpeta migrations, y/o entrar a la base y borrar los datos (solo cuando son de prueba)

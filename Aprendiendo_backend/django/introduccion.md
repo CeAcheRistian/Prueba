@@ -128,6 +128,11 @@ Hasta el momento solo tenemos un modelo para los productos. Pues vamos a agregar
 
 Para las llaves foraneas, se tiene un método y el primer argumento es el nombre de la clase a la cual se está haciendo referencia, y después especificamos en la propiedad on_delete el valor de CASCADE. Esto se escribe por si borramos un registro también se elimine la referencia. Como 3er argumento le damos un nombre a esta relación, el cual debe ser afin a la tabla donde se está escribiendo esta llave foránea.
 
-Al terminar debemos hacer las migraciones correspondientes con _makemigrations_, peeeero, debemos especificarle donde está la configuración de la base de datos. Peeeero, ponerle la bandera _--settings_ a cada rato es un fastidio, así queeeee
+Al terminar debemos hacer las migraciones correspondientes con _makemigrations_, peeeero, debemos especificarle donde está la configuración de la base de datos. Peeeero, ponerle la bandera _--settings_ a cada rato es un fastidio, así queeeee generamos un archivo __Makefile__, en cual podemos generar comandos abreviados, esto para evitar todo el fastidio de los comandos con las banderas y demás, o también pueden ser una lista de comandos. Generado el archivo y los comandos abriviados ahora hacemos: _make (comando)_
 
 Si al hacer las migraciones hay problema, borramos los archivos generados al haecr el makemigrations, estos se encuentran en la carpeta migrations, y/o entrar a la base y borrar los datos (solo cuando son de prueba)
+
+## Endpoint 'Leer mas'
+Creamos la función dentro del view, para obtener un producto en específico. Luego vamos al urls.py donde están las url mapeadas y agregaremos la nueva ruta, para esta ruta agregamos otrao parámetro, que es el nombre con el cual se puede acceder a ese path desde cualquier aprte de la aplicación.
+
+Se descarga el otro html para la vista correspondiente y se modifica conforme al contexto mandado por la view. También modificamos el html de la lista de productos, para que el botón de leer más, redireccione al producto. Esto con el atributo href, donde usaremos lenguaje de django templates y usaremos la propiedad _url_, en la cual hacemos referencia al nombre que le pusimos a la ruta, en urls.py y el id que esperamos recibir.

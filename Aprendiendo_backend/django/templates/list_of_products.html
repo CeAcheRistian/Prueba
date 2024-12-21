@@ -31,7 +31,7 @@
                             <p class="card-text">
                                 {{ producto.categoria }}
                             </p>
-                            <a class="btn btn-tomato" href="/">Leer más</a>
+                            <a class="btn btn-tomato" href={% url 'obtener_producto' id=producto.id %}>Leer más</a>
                         </div>
                     </div>
                 </div>

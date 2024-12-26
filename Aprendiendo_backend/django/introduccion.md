@@ -136,3 +136,14 @@ Si al hacer las migraciones hay problema, borramos los archivos generados al hae
 Creamos la función dentro del view, para obtener un producto en específico. Luego vamos al urls.py donde están las url mapeadas y agregaremos la nueva ruta, para esta ruta agregamos otrao parámetro, que es el nombre con el cual se puede acceder a ese path desde cualquier aprte de la aplicación.
 
 Se descarga el otro html para la vista correspondiente y se modifica conforme al contexto mandado por la view. También modificamos el html de la lista de productos, para que el botón de leer más, redireccione al producto. Esto con el atributo href, donde usaremos lenguaje de django templates y usaremos la propiedad _url_, en la cual hacemos referencia al nombre que le pusimos a la ruta, en urls.py y el id que esperamos recibir.
+
+# Clase 3
+## Templates y statics
+Para ver este pedo del frontend y como se estrcutura más que nada. creamos un html base, ya que los dos archivos html que tenemos repiten información. Dentro de base.html tendremos el head, que es lo que se repite
+
+Dentro del body colocamos con lenguaje de templates, muy similar a jinja2. block content y endblock dentro de llaves y signos de porcentaje. En los otros archivos heredamos de base y colocamos el bloque  de contenido.
+
+Para los archivos de estilos, pues ya se sabe que deben ir en una carpeta llamada __static__, para referenciarlos en los html agregamos una etiqueta link y en el atributo href, agregamos la referencia. Pero esto no es suficiente para que se carguen los archivos css, debemos ir a las configuraciones del proyecto y debajo de la constante _STATIC URL_ agregamos la constante *STATICFILES_DIRS*, que contendrá una lista con un elemento que es una referencia a la constante BASE_DIR, que hace referencia al proyecto y colocamos el simbolo: / y después el nombre de la carpeta. esto se parece a una división pero bueno.
+
+Y con esto debería cargar los archivos.
+> Todos los archivos html deben tener al principio un load static, para cargar los css. Si hay archivos que heredan de otros, el archivo padre debe tener el load static y con eso.

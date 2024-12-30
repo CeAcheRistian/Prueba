@@ -147,3 +147,22 @@ Para los archivos de estilos, pues ya se sabe que deben ir en una carpeta llamad
 
 Y con esto debería cargar los archivos.
 > Todos los archivos html deben tener al principio un load static, para cargar los css. Si hay archivos que heredan de otros, el archivo padre debe tener el load static y con eso.
+
+Existen otros tipos de vistas pero ahora son clases en vez de una función.
+
+Existe al página [ccbv.co.uk](https://ccbv.co.uk/) que nos regala views genéricas con todos los métodos y atributos de las vistas/clases.
+
+Si se desea paginar nuestra lista de productos, en la documentación de django viene como hacerlo.
+
+## Autorización y autenticación
+En el panel de adminsitración tenemos un apartado de esto, parra agregar usuarios y grupos con diferentes permisos. 
+
+Django ya viene con componentes para la [autenticación](https://docs.djangoproject.com/en/5.1/ref/contrib/auth/), existe la clase _User.model_ para tratar con esto. Campos, atributos y métodos que podemos ver desde el panel de administración.
+
+Los templates se pueden mostrar cuando en el contexto ya se encuentra un usuario logeado. Lo podemos ver si agregamos un _{{ user }}_ en un template. Y se muestra el nombre del usuario actual. Y con este objeto user, podemos ejecutar varios métodos, como: _{{user.get_fullname }}_, es cuestión de checar la documentación.
+
+Vamos a crear una nueva aplicación para gestionar las cuentas de los usuarios: _python3 manage.py startapp accounts_
+
+Y debemos añadirla al proyecto, escribiendo su nombre en la variable INSTALLED_APPS en el archivo base.py
+
+Vamos al proyecto cuentas y en la views implementamos una vista para el login. preguntamos si el método usado en la petición es post, sino mandamos el request y la redireccion al mismo template y como contexto un formulario que haremos después.

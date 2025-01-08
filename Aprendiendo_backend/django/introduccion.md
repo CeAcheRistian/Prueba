@@ -166,3 +166,7 @@ Vamos a crear una nueva aplicación para gestionar las cuentas de los usuarios: 
 Y debemos añadirla al proyecto, escribiendo su nombre en la variable INSTALLED_APPS en el archivo base.py
 
 Vamos al proyecto cuentas y en la views implementamos una vista para el login. preguntamos si el método usado en la petición es post, sino mandamos el request y la redireccion al mismo template y como contexto un formulario que haremos después.
+
+Ahora, en la carpeta de templates, agregamos una carpeta para las cuentas y dentro un login.html, para la vista que creamos recientemente. Dentro del html, solo extendemos de base y colocamos un bloque de contenido.
+
+Esta vista debemos agregarla a las urls admitidas. Dentro de la carpeta cuentas, creamos el archivo urls.py, este archivo es identico al que tenemos en la otra app, modificando los valores de los paths. Pero falta agregarlas al proyecto en sí, entocnes vamos el urls del proeycto y agregamos la ruta. Dentro del path, en el primer parámetro, vemos que es un string, el cual se muestra en la url en el navegador, pues como cada aplicación va a tener la suya, podemos colocarle un nombre para ingresar a todas estas urls que puede tener la aplicación. Para acceder a esto desde el navegador solo hace falta escribir el nombre que se colocó.

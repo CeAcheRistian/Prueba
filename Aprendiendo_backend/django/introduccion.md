@@ -170,3 +170,9 @@ Vamos al proyecto cuentas y en la views implementamos una vista para el login. p
 Ahora, en la carpeta de templates, agregamos una carpeta para las cuentas y dentro un login.html, para la vista que creamos recientemente. Dentro del html, solo extendemos de base y colocamos un bloque de contenido.
 
 Esta vista debemos agregarla a las urls admitidas. Dentro de la carpeta cuentas, creamos el archivo urls.py, este archivo es identico al que tenemos en la otra app, modificando los valores de los paths. Pero falta agregarlas al proyecto en sí, entocnes vamos el urls del proeycto y agregamos la ruta. Dentro del path, en el primer parámetro, vemos que es un string, el cual se muestra en la url en el navegador, pues como cada aplicación va a tener la suya, podemos colocarle un nombre para ingresar a todas estas urls que puede tener la aplicación. Para acceder a esto desde el navegador solo hace falta escribir el nombre que se colocó.
+
+Después de comprobar que la ruta existe en el navegador, procedemos a crear el fomrulario que mandamos, el valor del formulario es uno que django posee dentro de sus librerías. Es un formulario de autenticación ya integrado, lo almacenamos en una variable la cual se pasará como contexto. Y en el html correspondiente, lo mandamos llamar.
+
+Dentro de la lógica de la vista, en el caso donde el método sea post, debemos cachar la información que mande el usuario, y dentro de los parámetros del método que django nos regala, le mandamos el objeto request.POST, que es la información recibida por el usuario.
+
+DEspués preguntamos si el formulario es valido, con un método de django. Se considera valido cuando los campos obligatorios son cumplidos, las especificaciones especificas de algunos campos son cumplidas, ... Si es valido, obtenemos el usuario, y con otro método, logeamos manualmente al usuario. A este método login le pasamos el objeto request y el objeto user.

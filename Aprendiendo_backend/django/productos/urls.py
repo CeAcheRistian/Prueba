@@ -4,6 +4,6 @@ from django.urls import path
 from .views import index, obtener_producto
 
 urlpatterns = [
-    path('', index),
+    path('', index, name='index'),
     path('producto/<int:id>/', obtener_producto, name='obtener_producto'),
 ]

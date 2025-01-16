@@ -173,6 +173,10 @@ Esta vista debemos agregarla a las urls admitidas. Dentro de la carpeta cuentas,
 
 Después de comprobar que la ruta existe en el navegador, procedemos a crear el fomrulario que mandamos, el valor del formulario es uno que django posee dentro de sus librerías. Es un formulario de autenticación ya integrado, lo almacenamos en una variable la cual se pasará como contexto. Y en el html correspondiente, lo mandamos llamar.
 
-Dentro de la lógica de la vista, en el caso donde el método sea post, debemos cachar la información que mande el usuario, y dentro de los parámetros del método que django nos regala, le mandamos el objeto request.POST, que es la información recibida por el usuario.
+Dentro de la lógica de la vista, en el caso donde el método sea post, debemos cachar la información que mande el usuario, y dentro de los parámetros del método que django nos regala, le mandamos el objeto request.POST, que es la información recibida por el usuario. Se debe especificar que este objeto request.POST es el valor del objeto data.
 
-DEspués preguntamos si el formulario es valido, con un método de django. Se considera valido cuando los campos obligatorios son cumplidos, las especificaciones especificas de algunos campos son cumplidas, ... Si es valido, obtenemos el usuario, y con otro método, logeamos manualmente al usuario. A este método login le pasamos el objeto request y el objeto user.
+Después preguntamos si el formulario es valido, con un método de django. Se considera valido cuando los campos obligatorios son cumplidos, las especificaciones de algunos campos son cumplidas, ... Si es valido, obtenemos el usuario con un método django y con otro método, logeamos manualmente al usuario. A este método login le pasamos el objeto request y el objeto user. Y para finalizar, redireccionamos a la página principal, igualmente con un método que nos regala django.
+
+Para el logout, igualmente hacemos una función y usamos el método asociado de django. Y también esta view la registramos en las urls. Vamos a base.html y tomamos una barra de navegación sencilla de bootstrap, la pegamos y modificamos para que haya un botón dentro de un formulario, el cual tiene la acción de redirigir cuando se pulse.
+
+Dentro del html agregamos una condicional, si el usuario ya esta autenticado, pues mostramos la barra con el botón, sino mostramos otro botón de inicio de sesión.

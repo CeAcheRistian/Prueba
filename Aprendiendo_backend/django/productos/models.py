@@ -32,3 +32,20 @@ class Marca(models.Model):
 
     def __str__(self):
         return self.nombre
+
+
+class Comentarios(models.Model):
+    producto = models.ForeignKey('productos.Producto', on_delete=models.CASCADE, related_name='comentarios')
+    usuario = models.CharField(max_length=200)
+
+    comentario = models.TextField()
+
+    fecha_creacion = models.DateTimeField(default=timezone.now)
+    comentario_aprobado = models.BooleanField(default=False)
+
+    def aprobar_comentario(self):
+        self.comentario_aprobado = True
+        self.save()
+
+    def __str__(self):
+        return self.comentario

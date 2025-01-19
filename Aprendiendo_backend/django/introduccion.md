@@ -180,3 +180,11 @@ Después preguntamos si el formulario es valido, con un método de django. Se co
 Para el logout, igualmente hacemos una función y usamos el método asociado de django. Y también esta view la registramos en las urls. Vamos a base.html y tomamos una barra de navegación sencilla de bootstrap, la pegamos y modificamos para que haya un botón dentro de un formulario, el cual tiene la acción de redirigir cuando se pulse.
 
 Dentro del html agregamos una condicional, si el usuario ya esta autenticado, pues mostramos la barra con el botón, sino mostramos otro botón de inicio de sesión.
+
+# Clase 4
+## Formularios y Validaciones
+Antes de empezar con lo bueno, hay que hacer una modificación al html. mandaremos la barra de navegación a un archivo independiente y lo mandaremos a llamar con la propiedad _{% includes 'ruta' %}_ el cual importa el contenido de un archivo y lo coloca en donde es llamado. La ruta debe incluir la carpeta donde se encuentra, ya que django busca en la carpeta templates solamante.
+
+Crearemos formularios para los comentarios de cada producto de la tienda. Entonces empezamos creando el modelo de los comentarios. Esto en la carpeta de productos. para el producto, hacemos una llave foranea y dentro especificamos el nombre de la aplicación y el nombre del modelo, en este caso productos.Producto. Los demás columnas son legibles en el código. Agregamos una función para ver si el comentario fue aprobado, si sí, se guarda en la base con un método de django.
+
+Hacemos las migraciones correspondientes con los dos comandos de esto. Y agregamos en admin.py el nombre del modelo.
